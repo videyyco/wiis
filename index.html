@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Selamat Menonton Sayang🥰</title>
+
+<style>
+body{
+  margin:0;
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:#000;
+  font-family:Arial,sans-serif;
+}
+.container{
+  position:relative;
+  width:100%;
+  max-width:720px;
+}
+video{
+  width:100%;
+  border-radius:10px;
+}
+#overlay{
+  position:absolute;
+  inset:0;
+  background:rgba(0,0,0,.85);
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  border-radius:10px;
+}
+#btn{
+  margin-top:15px;
+  padding:14px 24px;
+  font-size:17px;
+  border:none;
+  border-radius:8px;
+  background:#ff5722;
+  color:#fff;
+  cursor:pointer;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+  <video id="vid" controls playsinline preload="metadata">
+    <source src="https://cdn.videy.co/pnFlSdvt1.mp4" type="video/mp4">
+  </video>
+
+  <div id="overlay">
+    <div>
+      <h3>🔞 WAJIB KLIK UNTUK MELANJUTKAN</h3>
+      <button id="btn">LANJUTKAN ▶</button>
+    </div>
+  </div>
+</div>
+
+<script>
+const video = document.getElementById("vid");
+const overlay = document.getElementById("overlay");
+const btn = document.getElementById("btn");
+
+const adUrl = "https://s.shopee.co.id/5L4wuJqb2U";
+const KEY = "clicked_ads";
+
+// jika sudah pernah klik
+if (localStorage.getItem(KEY)) {
+  overlay.style.display = "none";
+}
+
+// blok play sebelum klik
+video.addEventListener("play", () => {
+  if (!localStorage.getItem(KEY)) {
+    video.pause();
+    overlay.style.display = "flex";
+  }
+});
+
+// ⛔ JANGAN tambahkan kode lain di dalam ini
+btn.onclick = function () {
+  localStorage.setItem(KEY, "1");
+
+  // INI YANG MEMBUAT TIDAK ADA PERSETUJUAN BROWSER
+  window.open(adUrl, "_blank");
+
+  overlay.style.display = "none";
+};
+</script>
+
+</body>
+</html>
